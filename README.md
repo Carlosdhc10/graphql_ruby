@@ -19,5 +19,5 @@ This project is a simple application using **GraphQL** with **Ruby** and **Sinat
 ### 1. Clone this repository:
 
 ```bash
-git clone https://github.com/your_username/your_repository.git
+https://github.com/Carlosdhc10/graphql_ruby.git
 cd your_repository
