@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Películas - GraphQL</title>
+</head>
+<body>
+  <h1>Consulta de Películas</h1>
+  
+  <div>
+    <button onclick="loadMovies()">Cargar Películas</button>
+  </div>
+  
+  <div id="movies">
+    <!-- Los resultados de la consulta aparecerán aquí -->
+  </div>
+
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script>
+    // Función para cargar películas
+    function loadMovies() {
+      const query = `
+        query {
+          movies {
+            id
+            title
+            year
+            director
+            genre
+          }
+        }
+      `;
+      
+      // Realiza la consulta a la API de GraphQL
+      axios.post('http://localhost:4567/graphql', {
+        query: query
+      })
+      .then(response => {
+        // Muestra los resultados en la página
+        const movies = response.data.data.movies;
+        let moviesHTML = '<ul>';
+        movies.forEach(movie => {
+          moviesHTML += `
+            <li>
+              <strong>${movie.title}</strong> (${movie.year})<br>
+              Director: ${movie.director}<br>
+              Género: ${movie.genre}
+            </li>
+          `;
+        });
+        moviesHTML += '</ul>';
+        document.getElementById('movies').innerHTML = moviesHTML;
+      })
+      .catch(error => {
+        console.error('Error al cargar las películas:', error);
+      });
+    }
+  </script>
+</body>
+</html>

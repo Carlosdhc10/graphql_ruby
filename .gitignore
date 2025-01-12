@@ -1,0 +1,25 @@
+# Ruby
+*.gem
+*.rbc
+.bundle
+.config
+.yardoc
+_yardoc
+coverage
+InstalledFiles
+lib/bundler
+lib/ruby/gems
+log/*
+tmp/*
+
+# VSCode settings
+.vscode/
+
+# Node modules (en caso de que uses npm o yarn)
+node_modules/
+
+# Otros archivos y directorios específicos
+*.log
+*.pid
+*.bak
+*.swp
